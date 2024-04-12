@@ -1,12 +1,9 @@
-import { useState } from 'react';
+import UITypography from './components/UI/UITypography';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <button onClick={() => setCount((count) => count + 1)}>
-      count is {count}
-    </button>
+    <UITypography typography={'text_fz56_lh72'} color={'#000'}>Hello</UITypography>
   );
 }
 
