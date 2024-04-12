@@ -13,6 +13,7 @@ export type Typography =
   | 'text_fz14_lh23'
   | 'text_fz13_lh15';
 
+
 export const text_fz56_lh72 = {
   fontSize: 56,
   lineHeight: 72
@@ -64,4 +65,19 @@ export const text_fz14_lh23 = {
 export const text_fz13_lh15 = {
   fontSize: 13,
   lineHeight: 15
+}
+export const typographyValues = {
+  text_fz56_lh72,
+  text_fz36_lh47,
+  text_fz24_lh29,
+  text_fz20_lh24,
+  text_fz20_lh32,
+  text_fz18_lh21,
+  text_fz18_lh30,
+  text_fz16_lh20,
+  text_fz16_lh24,
+  text_fz15_lh18,
+  text_fz14_lh17,
+  text_fz14_lh23,
+  text_fz13_lh15
 }
