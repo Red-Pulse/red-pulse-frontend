@@ -1,0 +1,15 @@
+export const colors = {
+  red: '#E30611',
+  black: '#210604',
+  green: '#29E186',
+  white: '#FFFFFF',
+  textWhite: '#FFFFFF',
+  textBlack100: '#131313',
+  textBrown100: '#210604',
+  textGray100: '#666666',
+  textGray75: '#999999',
+  bloodTypeGreenBorder: '#29E186',
+  bloodTypeGreenBackground: '#E9F9F1',
+  bloodTypeRedBorder: '#FBA6A6',
+  bloodTypeRedBackground: '#FEEBEB',
+};

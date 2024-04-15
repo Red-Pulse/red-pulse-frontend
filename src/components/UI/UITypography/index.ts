@@ -1,1 +1,1 @@
-export {default} from './UITypography.tsx'
+export { default } from './UITypography.tsx';
