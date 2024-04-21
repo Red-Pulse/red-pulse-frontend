@@ -1,0 +1,60 @@
+.clinic{
+  &-card{
+    width: 100%;
+    padding: 31px 40px;
+    border: 0.5px solid #B3B3B3;
+    border-radius: 20px;
+    &__title {
+      max-height: 70px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    &__subtitle{
+      margin-top: 10px;
+    }
+    &__states{
+      margin: 10px 0 20px 0;
+      position: relative;
+      &-red::after{
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: #FF2C29;
+        position: absolute;
+        transform: translateY(75%);
+        margin-left: 6px;
+        border-radius: 50%;
+      }
+      &-green::after{
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: #29E888;
+        position: absolute;
+        transform: translateY(75%);
+        margin-left: 6px;
+        border-radius: 50%;
+      }
+    }
+    &__footer{
+      display: flex;
+      justify-content: space-between !important;
+      align-items: center;
+      margin-top: 20px;
+      &-text{
+        position: relative;
+      }
+      &-photos{
+        display: flex;
+        margin-right: -20px;
+      }
+    }
+  }
+}
+.row{
+  display: flex;
+  justify-content: space-between;
+}

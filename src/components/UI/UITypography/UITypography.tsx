@@ -4,23 +4,29 @@ import { colors } from 'assets/colors.ts';
 
 interface TypographyProps {
   typography: keyof typeof typographyValues;
+  fontWeight: 400 | 600 | 700 | 800;
   color?: keyof typeof colors;
+  className?: string;
   children: React.ReactNode;
 }
 
 const UITypography: React.FC<TypographyProps> = ({
   typography,
+  fontWeight,
   color = 'textBlack100',
+  className,
   children,
 }) => {
   const typographyValue = typographyValues[typography];
   return (
     <div
+      className={className}
       style={{
         fontFamily: 'Roboto',
         fontSize: typographyValue.fontSize,
-        fontWeight: typographyValue.lineHeight,
+        lineHeight: typographyValue.lineHeight,
         color: colors[color],
+        fontWeight: fontWeight,
       }}
     >
       {children}

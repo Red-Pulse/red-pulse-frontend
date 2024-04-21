@@ -1,0 +1,35 @@
+.swiper-slide{
+ width: 492px !important;
+}
+.swiper-button-prev,
+.swiper-button-next{
+ width: 70px;
+ height: 70px;
+ border: 1px solid #FF2C29;
+ border-radius: 50%;
+ cursor: pointer;
+ color: #fff;
+ background-color: #FF2C29;
+ transition: opacity ease-in-out .1s;
+ z-index: 100;
+}
+.swiper-button-disabled{
+ opacity: 0.2;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after{
+ font-size: 30px;
+}
+.swiper-button-prev{
+ position: relative;
+ top: 110%;
+ left: 45%;
+ transform: translate(10%,60%);
+}
+.swiper-button-next{
+ position: relative;
+ top: 100%;
+ left: 50%;
+ transform: translate(0%,-6%);
+}
+
