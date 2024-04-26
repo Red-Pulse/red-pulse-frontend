@@ -1,6 +1,7 @@
 import UITypography from 'components/UI/UITypography';
 import UIButton from 'components/UI/UIButton';
 import ClinicSwiper from './components/Clinic/ClinicSwiper';
+import { clinics } from './data.ts';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <UIButton size="large" disabled>
         Login
       </UIButton>
-      <ClinicSwiper />
+      <ClinicSwiper clinics={clinics} />
     </div>
   );
 }

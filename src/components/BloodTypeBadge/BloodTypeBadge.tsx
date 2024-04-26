@@ -1,12 +1,12 @@
 import React from 'react';
-import { BloodTypeEnum } from './data.ts';
 import './BloodTypeBadge.scss';
 import UITypography from '../UI/UITypography';
 import { colors } from '../../assets/colors.ts';
+import { ApiBloodType } from '../../data.ts';
 
 interface BloodTypeBadgeProps {
   variant: 'red' | 'green';
-  bloodType: BloodTypeEnum;
+  bloodType: ApiBloodType;
 }
 
 const BloodTypeBadge: React.FC<BloodTypeBadgeProps> = ({
@@ -36,7 +36,7 @@ const BloodTypeBadge: React.FC<BloodTypeBadgeProps> = ({
         color={isRedVariant ? 'bloodTypeRedBorder' : 'bloodTypeGreenBorder'}
         fontWeight={400}
       >
-        {bloodType}
+        {bloodType.short_name}
       </UITypography>
     </div>
   );

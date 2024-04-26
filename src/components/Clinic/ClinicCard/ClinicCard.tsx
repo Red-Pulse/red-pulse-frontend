@@ -1,30 +1,16 @@
-import React from 'react';
+import { FC } from 'react';
 import UITypography from '../../UI/UITypography';
 import BloodTypeBadge from '../../BloodTypeBadge';
-import { BloodTypeEnum } from '../../BloodTypeBadge/data.ts';
 import './ClinicCard.scss';
 import '../../../assets/colors.ts';
 import UIButton from '../../UI/UIButton';
+import { ApiClinic, bloodTypes } from '../../../data.ts';
 
-interface ClinicInfoProps {
-  name: string;
-  address: string;
+interface ClinicCardProps {
+  clinic: ApiClinic;
 }
 
-const ClinicCard: React.FC<{ clinicInfo: ClinicInfoProps }> = ({
-  clinicInfo: { name, address },
-}) => {
-  const imagesPath = [
-    {
-      src: 'https://w7.pngwing.com/pngs/178/419/png-transparent-man-illustration-computer-icons-avatar-login-user-avatar-child-web-design-face-thumbnail.png',
-    },
-    {
-      src: 'https://w7.pngwing.com/pngs/481/915/png-transparent-computer-icons-user-avatar-woman-avatar-computer-business-conversation-thumbnail.png',
-    },
-    {
-      src: 'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png',
-    },
-  ];
+const ClinicCard: FC<ClinicCardProps> = (props) => {
   return (
     <div className="clinic-card">
       <UITypography
@@ -33,7 +19,7 @@ const ClinicCard: React.FC<{ clinicInfo: ClinicInfoProps }> = ({
         color="textBrown100"
         fontWeight={400}
       >
-        {name}
+        {props.clinic.name}
       </UITypography>
 
       <UITypography
@@ -42,7 +28,7 @@ const ClinicCard: React.FC<{ clinicInfo: ClinicInfoProps }> = ({
         color="textGray100"
         fontWeight={400}
       >
-        {address}
+        {props.clinic.address}
       </UITypography>
 
       <div className={'clinic-card__states'}>
@@ -64,30 +50,18 @@ const ClinicCard: React.FC<{ clinicInfo: ClinicInfoProps }> = ({
         </UITypography>
       </div>
       <div className={'clinic-card__badges'}>
-        <div className="row">
-          <BloodTypeBadge
-            variant="green"
-            bloodType={BloodTypeEnum.Positive_0}
-          />
-          <BloodTypeBadge variant="red" bloodType={BloodTypeEnum.Positive_A} />
-          <BloodTypeBadge
-            variant="green"
-            bloodType={BloodTypeEnum.Positive_B}
-          />
-          <BloodTypeBadge variant="red" bloodType={BloodTypeEnum.Positive_AB} />
-        </div>
-        <div className="row">
-          <BloodTypeBadge
-            variant="green"
-            bloodType={BloodTypeEnum.Negative_0}
-          />
-          <BloodTypeBadge
-            variant="green"
-            bloodType={BloodTypeEnum.Negative_A}
-          />
-          <BloodTypeBadge variant="red" bloodType={BloodTypeEnum.Negative_B} />
-          <BloodTypeBadge variant="red" bloodType={BloodTypeEnum.Negative_AB} />
-        </div>
+        {bloodTypes.map((bloodType) => {
+          const isNeed = props.clinic.need_bloods.find(
+            (needBlood) => needBlood.type === bloodType.type
+          );
+
+          return (
+            <BloodTypeBadge
+              variant={isNeed ? 'red' : 'green'}
+              bloodType={bloodType}
+            />
+          );
+        })}
       </div>
       <UIButton
         variant="primary"
@@ -114,23 +88,23 @@ const ClinicCard: React.FC<{ clinicInfo: ClinicInfoProps }> = ({
         >
           Азиз, Ислам и еще 2484 донора запланировали сдать кровь здесь
         </UITypography>
-        <div className="clinic-card__footer-photos">
-          {imagesPath.map((img, index) => (
-            <img
-              src={img.src}
-              alt="image"
-              style={{
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                border: '1px solid white',
-                position: 'relative',
-                left: index * -10,
-                zIndex: imagesPath.length - index,
-              }}
-            />
-          ))}
-        </div>
+        {/*<div className="clinic-card__footer-photos">*/}
+        {/*  {imagesPath.map((img, index) => (*/}
+        {/*    <img*/}
+        {/*      src={img.src}*/}
+        {/*      alt="image"*/}
+        {/*      style={{*/}
+        {/*        width: '50px',*/}
+        {/*        height: '50px',*/}
+        {/*        borderRadius: '50%',*/}
+        {/*        border: '1px solid white',*/}
+        {/*        position: 'relative',*/}
+        {/*        left: index * -10,*/}
+        {/*        zIndex: imagesPath.length - index,*/}
+        {/*      }}*/}
+        {/*    />*/}
+        {/*  ))}*/}
+        {/*</div>*/}
       </div>
     </div>
   );
