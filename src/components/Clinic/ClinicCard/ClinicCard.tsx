@@ -39,7 +39,7 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
           color="textGray75"
           fontWeight={400}
         >
-          Требуется
+          Need bloods
         </UITypography>
         <UITypography
           className={'clinic-card__states-green'}
@@ -47,13 +47,13 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
           color="textGray75"
           fontWeight={400}
         >
-          Достаточно
+          Enough bloods
         </UITypography>
       </div>
       <div className={'clinic-card__badges'}>
         {bloodTypes.map((bloodType) => {
-          const isNeed = props.clinic.need_bloods.find(
-            (needBlood) => needBlood.type === bloodType.type
+          const isNeed = props.clinic.needBloods.find(
+            (needBlood) => needBlood.id === bloodType.id
           );
 
           return (
@@ -77,7 +77,7 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
           color="white"
           fontWeight={400}
         >
-          Присоединиться
+          Join to be donor
         </UITypography>
       </UIButton>
       <div className="clinic-card__footer">
@@ -87,25 +87,29 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
           fontWeight={400}
           color="textGray75"
         >
-          Азиз, Ислам и еще 2484 донора запланировали сдать кровь здесь
+          {props.clinic.users.length > 3
+            ? `${props.clinic.users.map((user) => user.firstName).join(', ')} and ${props.clinic.users.length - 2} other donors have planned to donate blood here.`
+            : props.clinic.users.length
+              ? `${props.clinic.users.map((user) => user.firstName).join(', ')} have planned to donate blood here.`
+              : ''}
         </UITypography>
-        {/*<div className="clinic-card__footer-photos">*/}
-        {/*  {imagesPath.map((img, index) => (*/}
-        {/*    <img*/}
-        {/*      src={img.src}*/}
-        {/*      alt="image"*/}
-        {/*      style={{*/}
-        {/*        width: '50px',*/}
-        {/*        height: '50px',*/}
-        {/*        borderRadius: '50%',*/}
-        {/*        border: '1px solid white',*/}
-        {/*        position: 'relative',*/}
-        {/*        left: index * -10,*/}
-        {/*        zIndex: imagesPath.length - index,*/}
-        {/*      }}*/}
-        {/*    />*/}
-        {/*  ))}*/}
-        {/*</div>*/}
+        <div className="clinic-card__footer-photos">
+          {props.clinic.users.map((user, index) => (
+            <img
+              src={user.photo}
+              alt="image"
+              style={{
+                width: '50px',
+                height: '50px',
+                borderRadius: '50%',
+                border: '1px solid white',
+                position: 'relative',
+                left: index * -10,
+                zIndex: props.clinic.users.length - index,
+              }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

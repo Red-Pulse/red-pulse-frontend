@@ -73,14 +73,14 @@ const AuthModal = forwardRef<AuthModalRef, AuthModalProps>((_, ref) => {
             classes={{ root: 'auth-modal__tab-content' }}
           >
             {authType === 'register' ? (
-              <RegisterClinic />
+              <RegisterClinic closeModal={handleClose} />
             ) : (
               <LoginClinic closeModal={handleClose} />
             )}
           </TabPanel>
           <TabPanel value="user" classes={{ root: 'auth-modal__tab-content' }}>
             {authType === 'register' ? (
-              <RegisterUser />
+              <RegisterUser closeModal={handleClose} />
             ) : (
               <LoginUser closeModal={handleClose} />
             )}

@@ -1,14 +1,18 @@
 import { makeAutoObservable } from 'mobx';
+import { ApiBloodType } from './models.ts';
+import instance from '../../api/instance.ts';
 
 class BloodTypesStore {
-  counter = 0;
+  bloodTypes: ApiBloodType[] = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  increment() {
-    this.counter++;
+  async fetchBloodTypes() {
+    const response = await instance.get('blood-types');
+
+    this.bloodTypes = response.data;
   }
 }
 

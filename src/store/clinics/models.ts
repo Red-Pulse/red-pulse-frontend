@@ -1,4 +1,5 @@
 import { ApiBloodType } from '../bloodTypes/models.ts';
+import { ApiUser } from '../auth/models.ts';
 
 export interface ApiClinic {
   id: number;
@@ -7,5 +8,6 @@ export interface ApiClinic {
   latitude: number;
   longitude: number;
   address: string;
-  need_bloods: Array<ApiBloodType>;
+  needBloods: Array<ApiBloodType>;
+  users: ApiUser[];
 }

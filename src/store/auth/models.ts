@@ -17,6 +17,16 @@ export interface RegisterUserPayload {
   bloodTypeId: number;
 }
 
+export interface RegisterClinicPayload {
+  inn: number;
+  password: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  address: string;
+  needBloods: number[];
+}
+
 export interface LoginUserPayload {
   phone: string;
   password: string;

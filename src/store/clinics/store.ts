@@ -1,14 +1,18 @@
 import { makeAutoObservable } from 'mobx';
+import { ApiClinic } from './models.ts';
+import instance from '../../api/instance.ts';
 
 class ClinicsStore {
-  counter = 0;
+  clinics: ApiClinic[] = [];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  increment() {
-    this.counter++;
+  async fetchClinics() {
+    const response = await instance.get('clinics');
+
+    this.clinics = response.data;
   }
 }
 
