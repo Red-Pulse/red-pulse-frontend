@@ -1,19 +1,5 @@
-export interface ApiBloodType {
-  id: number;
-  short_name: string;
-  long_name: string;
-  type: string;
-}
-
-export interface ApiClinic {
-  id: number;
-  inn: number;
-  name: string;
-  latitude: number;
-  longitude: number;
-  address: string;
-  need_bloods: Array<ApiBloodType>;
-}
+import { ApiBloodType } from './store/bloodTypes/models.ts';
+import { ApiClinic } from './store/clinics/models.ts';
 
 export const bloodTypes: ApiBloodType[] = [
   {

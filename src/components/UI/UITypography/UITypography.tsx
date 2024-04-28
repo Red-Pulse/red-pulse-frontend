@@ -4,7 +4,7 @@ import { colors } from 'assets/colors.ts';
 
 interface TypographyProps {
   typography: keyof typeof typographyValues;
-  fontWeight: 400 | 600 | 700 | 800;
+  fontWeight: 400 | 500 | 600 | 700 | 800;
   color?: keyof typeof colors;
   className?: string;
   children: React.ReactNode;

@@ -1,35 +1,67 @@
+.clinics {
+  margin-top: 20px;
+}
+
+.swiper-wrapper {
+  margin-bottom: 20px;
+}
+
 .swiper-slide{
  width: 492px !important;
 }
 .swiper-button-prev,
 .swiper-button-next{
- width: 70px;
- height: 70px;
- border: 1px solid #FF2C29;
- border-radius: 50%;
- cursor: pointer;
- color: #fff;
- background-color: #FF2C29;
- transition: opacity ease-in-out .1s;
- z-index: 100;
+
 }
 .swiper-button-disabled{
- opacity: 0.2;
+ opacity: 0.6;
 }
 
-.swiper-button-prev::after, .swiper-button-next::after{
- font-size: 30px;
+.swiper-button-prev::after, .swiper-button-next::after {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #FF2C29;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  background-color: #FF2C29;
+  transition: opacity ease-in-out .1s;
+  z-index: 100;
+  font-size: 12px;
 }
-.swiper-button-prev{
- position: relative;
- top: 110%;
- left: 45%;
- transform: translate(10%,60%);
+
+.swiper-button-prev {
+  width: 47px;
+  height: 47px;
+  position: relative;
+  top: initial;
+  bottom: 0;
+  right: initial;
+  left: 50%;
+  margin-top: 0;
+  transform: translateX(calc(-100% - 10px));
+
+  &::after {
+    left: 0;
+  }
 }
-.swiper-button-next{
- position: relative;
- top: 100%;
- left: 50%;
- transform: translate(0%,-6%);
+.swiper-button-next {
+  width: 47px;
+  height: 47px;
+  position: absolute;
+  top: initial;
+  bottom: 0;
+  right: 50%;
+  left: initial;
+  margin-top: 0;
+  transform: translateX(calc(100% + 10px));
+
+  &::after {
+    right: 0;
+  }
 }
 

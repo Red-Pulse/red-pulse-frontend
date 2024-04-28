@@ -4,7 +4,8 @@ import BloodTypeBadge from '../../BloodTypeBadge';
 import './ClinicCard.scss';
 import '../../../assets/colors.ts';
 import UIButton from '../../UI/UIButton';
-import { ApiClinic, bloodTypes } from '../../../data.ts';
+import { bloodTypes } from '../../../data.ts';
+import { ApiClinic } from '../../../store/clinics/models.ts';
 
 interface ClinicCardProps {
   clinic: ApiClinic;
