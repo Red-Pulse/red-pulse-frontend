@@ -14,6 +14,24 @@ class ClinicsStore {
 
     this.clinics = response.data;
   }
+
+  async joinToBeDonor(clinicId: number, userId: number) {
+    await instance.post('clinics/join', {
+      clinicId,
+      userId,
+    });
+
+    this.fetchClinics();
+  }
+
+  async disconnect(clinicId: number, userId: number) {
+    await instance.post('clinics/disconnect', {
+      clinicId,
+      userId,
+    });
+
+    this.fetchClinics();
+  }
 }
 
 export default new ClinicsStore();

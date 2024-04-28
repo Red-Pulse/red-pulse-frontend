@@ -6,12 +6,19 @@ import '../../../assets/colors.ts';
 import UIButton from '../../UI/UIButton';
 import { bloodTypes } from '../../../data.ts';
 import { ApiClinic } from '../../../store/clinics/models.ts';
+import store from '../../../store';
 
 interface ClinicCardProps {
   clinic: ApiClinic;
+  handlePressJoin: (clinic: ApiClinic) => void;
+  handlePressDisconnect: (clinic: ApiClinic) => void;
 }
 
 const ClinicCard: FC<ClinicCardProps> = (props) => {
+  const isJoined = !!props.clinic.users.find(
+    (user) => user.id === store.auth.user?.id
+  );
+
   return (
     <div className="clinic-card">
       <UITypography
@@ -71,13 +78,18 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
           width: '100%',
           borderRadius: '20px',
         }}
+        onClick={() =>
+          isJoined
+            ? props.handlePressDisconnect(props.clinic)
+            : props.handlePressJoin(props.clinic)
+        }
       >
         <UITypography
           typography="text_fz16_lh24"
           color="white"
           fontWeight={400}
         >
-          Join to be donor
+          {isJoined ? 'Disconnect' : 'Join to be donor'}
         </UITypography>
       </UIButton>
       <div className="clinic-card__footer">
