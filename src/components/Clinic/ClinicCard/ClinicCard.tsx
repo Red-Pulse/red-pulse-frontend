@@ -6,6 +6,7 @@ import '../../../assets/colors.ts';
 import UIButton from '../../UI/UIButton';
 import { ApiClinic } from '../../../store/clinics/models.ts';
 import store from '../../../store';
+import { observer } from 'mobx-react';
 
 interface ClinicCardProps {
   clinic: ApiClinic;
@@ -58,7 +59,7 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
       </div>
       <div className={'clinic-card__badges'}>
         {store.bloodTypes.bloodTypes.map((bloodType) => {
-          const isNeed = props.clinic.needBloods.find(
+          const isNeed = props.clinic.needBloods?.find(
             (needBlood) => needBlood.id === bloodType.id
           );
 
@@ -126,4 +127,4 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
   );
 };
 
-export default ClinicCard;
+export default observer(ClinicCard);

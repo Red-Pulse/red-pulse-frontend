@@ -3,6 +3,7 @@ import './BloodTypeBadge.scss';
 import UITypography from '../UI/UITypography';
 import { colors } from '../../assets/colors.ts';
 import { ApiBloodType } from '../../store/bloodTypes/models.ts';
+import { observer } from 'mobx-react';
 
 interface BloodTypeBadgeProps {
   variant: 'red' | 'green';
@@ -42,4 +43,4 @@ const BloodTypeBadge: React.FC<BloodTypeBadgeProps> = ({
   );
 };
 
-export default BloodTypeBadge;
+export default observer(BloodTypeBadge);

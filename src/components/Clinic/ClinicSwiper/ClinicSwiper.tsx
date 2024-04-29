@@ -26,10 +26,12 @@ const ClinicSwiper: FC<ClinicSwiperProps> = (props) => {
     }
 
     await store.clinics.joinToBeDonor(clinic.id, store.auth.user.id);
+    await store.clinics.fetchClinics();
   };
 
   const handleDisconnect = async (clinic: ApiClinic) => {
     await store.clinics.disconnect(clinic.id, store.auth.user?.id!);
+    await store.clinics.fetchClinics();
   };
 
   return (

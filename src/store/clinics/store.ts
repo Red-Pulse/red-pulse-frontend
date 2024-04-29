@@ -20,8 +20,6 @@ class ClinicsStore {
       clinicId,
       userId,
     });
-
-    this.fetchClinics();
   }
 
   async disconnect(clinicId: number, userId: number) {
@@ -29,8 +27,6 @@ class ClinicsStore {
       clinicId,
       userId,
     });
-
-    this.fetchClinics();
   }
 }
 

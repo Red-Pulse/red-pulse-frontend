@@ -6,6 +6,8 @@ import './ProfilePage.scss';
 import { Map, Placemark, YMaps } from 'react-yandex-maps';
 import BloodTypeBadge from '../../components/BloodTypeBadge';
 import { observer } from 'mobx-react';
+import ClinicCard from '../../components/Clinic/ClinicCard';
+import { ApiClinic } from '../../store/clinics/models.ts';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -19,36 +21,62 @@ const ProfilePage = () => {
       return null;
     }
 
+    const handleJoin = async (clinic: ApiClinic) => {
+      await store.clinics.joinToBeDonor(clinic.id, store.auth.user?.id!);
+      await store.auth.fetchUser(store.auth.user?.id!);
+    };
+
+    const handleDisconnect = async (clinic: ApiClinic) => {
+      await store.clinics.disconnect(clinic.id, store.auth.user?.id!);
+      await store.auth.fetchUser(store.auth.user?.id!);
+    };
+
     return (
-      <div className="profile__card">
-        <img
-          src={store.auth.user.photo}
-          className="profile__card-photo"
-          alt="user photo"
-        />
-        <div className="profile__card-content">
-          <div className="profile__card-info">
-            <b>ID: </b>
-            <span>{store.auth.user.id}</span>
-          </div>
-          <div className="profile__card-info">
-            <b>Full Name: </b>
-            <span>
-              {store.auth.user.lastName} {store.auth.user.firstName}
-            </span>
-          </div>
-          <div className="profile__card-info">
-            <b>Phone: </b>
-            <span>+{store.auth.user.phone}</span>
-          </div>
-          <div className="profile__card-info">
-            <b>Blood type: </b>
-            <span>
-              {store.auth.user.bloodType.longName} (
-              {store.auth.user.bloodType.shortName})
-            </span>
+      <div>
+        <div className="profile__card">
+          <img
+            src={store.auth.user.photo}
+            className="profile__card-photo"
+            alt="user photo"
+          />
+          <div className="profile__card-content">
+            <div className="profile__card-info">
+              <b>ID: </b>
+              <span>{store.auth.user.id}</span>
+            </div>
+            <div className="profile__card-info">
+              <b>Full Name: </b>
+              <span>
+                {store.auth.user.lastName} {store.auth.user.firstName}
+              </span>
+            </div>
+            <div className="profile__card-info">
+              <b>Phone: </b>
+              <span>+{store.auth.user.phone}</span>
+            </div>
+            <div className="profile__card-info">
+              <b>Blood type: </b>
+              <span>
+                {store.auth.user.bloodType.longName} (
+                {store.auth.user.bloodType.shortName})
+              </span>
+            </div>
           </div>
         </div>
+        {!!store.auth.user?.clinics.length && (
+          <div>
+            <h3 className="users-list__title">Clinics</h3>
+            <div className="clinics__wrapper">
+              {store.auth.user.clinics.map((clinic) => (
+                <ClinicCard
+                  clinic={clinic}
+                  handlePressJoin={handleJoin}
+                  handlePressDisconnect={handleDisconnect}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     );
   };

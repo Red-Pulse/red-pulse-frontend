@@ -1,4 +1,5 @@
 import { ApiBloodType } from '../bloodTypes/models.ts';
+import { ApiClinic } from '../clinics/models.ts';
 
 export interface ApiUser {
   id: number;
@@ -7,6 +8,7 @@ export interface ApiUser {
   phone: string;
   photo: string;
   bloodType: ApiBloodType;
+  clinics: ApiClinic[];
 }
 
 export interface RegisterUserPayload {
