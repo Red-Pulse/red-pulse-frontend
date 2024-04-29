@@ -2,7 +2,7 @@ import React from 'react';
 import './BloodTypeBadge.scss';
 import UITypography from '../UI/UITypography';
 import { colors } from '../../assets/colors.ts';
-import { ApiBloodType } from '../../data.ts';
+import { ApiBloodType } from '../../store/bloodTypes/models.ts';
 
 interface BloodTypeBadgeProps {
   variant: 'red' | 'green';
@@ -36,7 +36,7 @@ const BloodTypeBadge: React.FC<BloodTypeBadgeProps> = ({
         color={isRedVariant ? 'bloodTypeRedBorder' : 'bloodTypeGreenBorder'}
         fontWeight={400}
       >
-        {bloodType.short_name}
+        {bloodType.shortName}
       </UITypography>
     </div>
   );

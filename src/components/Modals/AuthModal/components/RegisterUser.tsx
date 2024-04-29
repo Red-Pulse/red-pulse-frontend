@@ -35,7 +35,7 @@ const RegisterUser: FC<RegisterUserProps> = (props) => {
     await store.auth.registerUser({
       firstName: firstName.value,
       lastName: lastName.value,
-      phone: phone.value,
+      phone: phone.value.replace('+', ''),
       password: password.value,
       bloodTypeId: bloodType?.id!,
     });

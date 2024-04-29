@@ -31,13 +31,15 @@ class AuthStore {
     if (userFromStorage) {
       this.isAuthenticated = isAuthenticated;
       this.user = JSON.parse(userFromStorage) as ApiUser;
-      this.isUser = true;
+
+      this.fetchUser(this.user.id);
     }
 
     if (clinicFromStorage) {
       this.isAuthenticated = isAuthenticated;
       this.clinic = JSON.parse(clinicFromStorage) as ApiClinic;
-      this.isClinic = true;
+
+      this.fetchClinic(this.clinic.id);
     }
   }
 
@@ -131,6 +133,20 @@ class AuthStore {
     localStorage.removeItem('user');
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('clinic');
+  }
+
+  async fetchUser(userId: number) {
+    const response = await instance.get(`/users/${userId}`);
+
+    this.isUser = true;
+    this.user = response.data;
+  }
+
+  async fetchClinic(clinicId: number) {
+    const response = await instance.get(`/clinics/${clinicId}`);
+
+    this.isClinic = true;
+    this.clinic = response.data;
   }
 }
 

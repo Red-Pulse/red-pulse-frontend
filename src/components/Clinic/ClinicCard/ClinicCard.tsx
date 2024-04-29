@@ -4,7 +4,6 @@ import BloodTypeBadge from '../../BloodTypeBadge';
 import './ClinicCard.scss';
 import '../../../assets/colors.ts';
 import UIButton from '../../UI/UIButton';
-import { bloodTypes } from '../../../data.ts';
 import { ApiClinic } from '../../../store/clinics/models.ts';
 import store from '../../../store';
 
@@ -58,7 +57,7 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
         </UITypography>
       </div>
       <div className={'clinic-card__badges'}>
-        {bloodTypes.map((bloodType) => {
+        {store.bloodTypes.bloodTypes.map((bloodType) => {
           const isNeed = props.clinic.needBloods.find(
             (needBlood) => needBlood.id === bloodType.id
           );

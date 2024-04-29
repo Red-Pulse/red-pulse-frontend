@@ -7,9 +7,11 @@ import AuthModal, { AuthModalRef } from '../Modals/AuthModal/AuthModal.tsx';
 import { observer } from 'mobx-react';
 import store from '../../store';
 import UITypography from '../UI/UITypography';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header: FC = () => {
+  const navigate = useNavigate();
+
   const authModalRef = useRef<AuthModalRef>(null);
 
   const renderPersonalData = useMemo(() => {
@@ -48,7 +50,10 @@ const Header: FC = () => {
         <UIButton
           variant="primary"
           size="large"
-          onClick={() => store.auth.logout()}
+          onClick={() => {
+            store.auth.logout();
+            navigate('/');
+          }}
         >
           Logout
         </UIButton>
@@ -59,7 +64,9 @@ const Header: FC = () => {
   return (
     <header className="header">
       <UIContainer className="header__container">
-        <img src={logo} alt="Logo" />
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+        </Link>
 
         {store.auth.isAuthenticated ? (
           renderPersonalData

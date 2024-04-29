@@ -1,8 +1,8 @@
 import { FC, useEffect } from 'react';
 import ClinicSwiper from '../../components/Clinic/ClinicSwiper';
 import { observer } from 'mobx-react';
-import Header from '../../components/Header/Header.tsx';
 import store from '../../store';
+import Layout from '../../components/Layout/Layout.tsx';
 
 const MainPage: FC = () => {
   useEffect(() => {
@@ -10,10 +10,9 @@ const MainPage: FC = () => {
   }, []);
 
   return (
-    <div>
-      <Header />
+    <Layout>
       {!store.auth.isClinic && <ClinicSwiper clinics={store.clinics.clinics} />}
-    </div>
+    </Layout>
   );
 };
 

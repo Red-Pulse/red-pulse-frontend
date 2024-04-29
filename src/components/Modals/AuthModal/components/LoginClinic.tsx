@@ -2,12 +2,15 @@ import { FC, useState } from 'react';
 import store from '../../../../store';
 import { TextField } from '@mui/material';
 import UIButton from '../../../UI/UIButton';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginClinicProps {
   closeModal: () => void;
 }
 
 const LoginClinic: FC<LoginClinicProps> = (props) => {
+  const navigate = useNavigate();
+
   const [inn, setInn] = useState({
     value: '',
     error: '',
@@ -29,6 +32,7 @@ const LoginClinic: FC<LoginClinicProps> = (props) => {
       setPassword((prevState) => ({ ...prevState, error: 'Wrong password' }));
     } else {
       props.closeModal();
+      navigate('/profile');
     }
   };
 

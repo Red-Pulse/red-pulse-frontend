@@ -5,12 +5,15 @@ import { TextField } from '@mui/material';
 import { Autocomplete } from '@mui/lab';
 import UIButton from '../../../UI/UIButton';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
+import { useNavigate } from 'react-router-dom';
 
 interface RegisterClinicProps {
   closeModal: () => void;
 }
 
 const RegisterClinic: FC<RegisterClinicProps> = (props) => {
+  const navigate = useNavigate();
+
   const [inn, setInn] = useState({
     value: '',
     error: '',
@@ -55,6 +58,7 @@ const RegisterClinic: FC<RegisterClinicProps> = (props) => {
     });
 
     props.closeModal();
+    navigate('/profile');
   };
 
   const handleMapClick = (e) => {
