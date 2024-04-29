@@ -5,7 +5,7 @@ import './UIButton.scss';
 
 interface UIButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'small' | 'medium' | 'large';
-  variant?: 'primary';
+  variant?: 'primary' | 'secondary';
   rounded?: boolean;
   style?: CSSProperties;
 }
@@ -31,6 +31,9 @@ const UIButton: FC<UIButtonProps> = ({
         ...(variant === 'primary' && {
           background: colors.red,
           color: colors.textWhite,
+        }),
+        ...(variant === 'secondary' && {
+          background: colors.textGray75,
         }),
       }}
     >

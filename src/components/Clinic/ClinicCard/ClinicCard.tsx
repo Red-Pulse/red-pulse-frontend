@@ -72,7 +72,7 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
         })}
       </div>
       <UIButton
-        variant="primary"
+        variant={isJoined ? 'secondary' : 'primary'}
         size="large"
         style={{
           width: '100%',

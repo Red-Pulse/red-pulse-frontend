@@ -8,6 +8,7 @@ import BloodTypeBadge from '../../components/BloodTypeBadge';
 import { observer } from 'mobx-react';
 import ClinicCard from '../../components/Clinic/ClinicCard';
 import { ApiClinic } from '../../store/clinics/models.ts';
+import { useEffect } from 'react';
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,16 @@ const ProfilePage = () => {
   if (!store.auth.isAuthenticated) {
     navigate('/');
   }
+
+  useEffect(() => {
+    if (store.auth.isUser) {
+      store.auth.fetchUser(store.auth.user?.id!);
+    }
+
+    if (store.auth.isClinic) {
+      store.auth.fetchClinic(store.auth.clinic?.id!);
+    }
+  }, []);
 
   const renderUserProfile = () => {
     if (!store.auth.user) {
@@ -65,7 +76,7 @@ const ProfilePage = () => {
         </div>
         {!!store.auth.user?.clinics.length && (
           <div>
-            <h3 className="users-list__title">Clinics</h3>
+            <h3 className="users-list__title">Joined clinics</h3>
             <div className="clinics__wrapper">
               {store.auth.user.clinics.map((clinic) => (
                 <ClinicCard
@@ -144,7 +155,7 @@ const ProfilePage = () => {
         </div>
         {!!store.auth.clinic?.users.length && (
           <div>
-            <h3 className="users-list__title">Users</h3>
+            <h3 className="users-list__title">Joined users</h3>
             <div className="users-list">
               {store.auth.clinic.users.map((user) => (
                 <div className="user">
