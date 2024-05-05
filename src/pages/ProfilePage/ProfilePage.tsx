@@ -74,7 +74,7 @@ const ProfilePage = () => {
             </div>
           </div>
         </div>
-        {!!store.auth.user?.clinics.length && (
+        {!!store.auth.user?.clinics?.length && (
           <div>
             <h3 className="users-list__title">Joined clinics</h3>
             <div className="clinics__wrapper">
@@ -138,7 +138,7 @@ const ProfilePage = () => {
             </div>
             <div className="profile__card-info">
               <b>Joined Users Count: </b>
-              <span>{store.clinics.currentClinic?.users.length ?? 0}</span>
+              <span>{store.clinics.currentClinic?.users?.length ?? 0}</span>
             </div>
             <b>Need bloods: </b>
             <div className={'profile__card-badges'}>

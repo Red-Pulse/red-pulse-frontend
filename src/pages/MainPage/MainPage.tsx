@@ -3,12 +3,12 @@ import ClinicSwiper from '../../components/Clinic/ClinicSwiper';
 import { observer } from 'mobx-react';
 import store from '../../store';
 import Layout from '../../components/Layout/Layout.tsx';
-import banner from 'assets/img/banner.png'
+import banner from 'assets/img/banner.png';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import './MainPage.scss'
+import './MainPage.scss';
 import UIContainer from '../../components/UI/UIContainer';
 import UITypography from '../../components/UI/UITypography';
 const MainPage: FC = () => {
@@ -35,9 +35,16 @@ const MainPage: FC = () => {
               autoplay={{ delay: 2000 }}
               className="mySwiper"
             >
-              {texts.map(text => (
+              {texts.map((text) => (
                 <SwiperSlide>
-                  <UITypography color='black' className='banner__text' typography='text_fz50_lh60' fontWeight={500}>{text}</UITypography>
+                  <UITypography
+                    color="black"
+                    className="banner__text"
+                    typography="text_fz50_lh60"
+                    fontWeight={500}
+                  >
+                    {text}
+                  </UITypography>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -48,7 +55,9 @@ const MainPage: FC = () => {
           </div>
         </UIContainer>
       </div>
-      {!store.auth.isClinic && <ClinicSwiper clinics={store.clinics.clinics} />}
+      {!store.auth.isClinic && !!store.clinics.clinics.length && (
+        <ClinicSwiper clinics={store.clinics.clinics} />
+      )}
     </Layout>
   );
 };

@@ -35,7 +35,7 @@ const BloodTypeBadge: React.FC<BloodTypeBadgeProps> = ({
       <UITypography
         typography="text_fz20_lh24"
         color={isRedVariant ? 'bloodTypeRedBorder' : 'bloodTypeGreenBorder'}
-        fontWeight={400}
+        fontWeight={500}
       >
         {bloodType.shortName}
       </UITypography>
