@@ -12,11 +12,16 @@ export type Typography =
   | 'text_fz15_lh18'
   | 'text_fz14_lh17'
   | 'text_fz14_lh23'
-  | 'text_fz13_lh15';
+  | 'text_fz13_lh15'
+  | 'text_fz50_lh60';
 
 export const text_fz56_lh72 = {
   fontSize: '56px',
   lineHeight: '72px',
+};
+export const text_fz50_lh60 = {
+  fontSize: '50px',
+  lineHeight: '60px',
 };
 
 export const text_fz36_lh47 = {
@@ -85,6 +90,7 @@ export const text_fz13_lh15 = {
 
 export const typographyValues = {
   text_fz56_lh72,
+  text_fz50_lh60,
   text_fz36_lh47,
   text_fz32_ln37,
   text_fz24_lh29,

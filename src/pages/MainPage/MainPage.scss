@@ -1,0 +1,28 @@
+.banner{
+  background-color: #EDF1FE;
+  .mySwiper{
+    height: 430px !important;
+  }
+  .swiper-slide{background-color: #EDF1FE;}
+  &__container{
+    position: relative;
+  }
+  &__image{
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    height: 400px;
+    top: 50%;
+    transform: translateY(-50%);
+    img{
+      height: 100%;
+    }
+  }
+  &__text{
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+  }
+}
