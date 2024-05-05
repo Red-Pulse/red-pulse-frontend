@@ -9,7 +9,7 @@ const Footer: FC = () => {
     <footer className="footer">
       <UIContainer className="footer__container">
         <img src={LogoSmall} width="60px" />
-        <UITypography typography="text_fz18_lh21" fontWeight={400}>
+        <UITypography typography="text_fz16_lh20" fontWeight={400}>
           <i>© 2024 Red Pulse, Inc. All rights reserved.</i>
         </UITypography>
       </UIContainer>

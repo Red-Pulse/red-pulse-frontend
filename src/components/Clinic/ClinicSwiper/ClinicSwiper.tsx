@@ -7,7 +7,6 @@ import { Navigation } from 'swiper/modules';
 import './ClinicSwiper.scss';
 import { FC, useRef } from 'react';
 import { ApiClinic } from '../../../store/clinics/models.ts';
-import UIContainer from '../../UI/UIContainer';
 import AuthModal from '../../Modals/AuthModal';
 import { AuthModalRef } from '../../Modals/AuthModal/AuthModal.tsx';
 import store from '../../../store';
@@ -37,26 +36,30 @@ const ClinicSwiper: FC<ClinicSwiperProps> = (props) => {
 
   return (
     <div className="clinics">
-      <UITypography className='clinics__title' typography='text_fz36_lh47' fontWeight={500}>Clinics</UITypography>
-      <UIContainer fluid>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView="auto"
-          navigation={true}
-          modules={[Navigation]}
-        >
-          {props.clinics.map((clinic, index) => (
-            <SwiperSlide key={index}>
-              <ClinicCard
-                clinic={clinic}
-                handlePressJoin={handleJoin}
-                handlePressDisconnect={handleDisconnect}
-              />
-            </SwiperSlide>
-          ))}
-          <SwiperSlide />
-        </Swiper>
-      </UIContainer>
+      <UITypography
+        className="clinics__title"
+        typography="text_fz36_lh47"
+        fontWeight={500}
+      >
+        Clinics
+      </UITypography>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView="auto"
+        navigation={true}
+        modules={[Navigation]}
+      >
+        {props.clinics.map((clinic, index) => (
+          <SwiperSlide key={index}>
+            <ClinicCard
+              clinic={clinic}
+              handlePressJoin={handleJoin}
+              handlePressDisconnect={handleDisconnect}
+            />
+          </SwiperSlide>
+        ))}
+        <SwiperSlide />
+      </Swiper>
       <AuthModal ref={authModalRef} />
     </div>
   );
