@@ -11,3 +11,7 @@ a {
 ul {
   list-style: none;
 }
+
+main {
+  min-height: calc(100vh - 82px - 120px);
+}

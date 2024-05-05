@@ -7,6 +7,7 @@ import UIButton from '../../UI/UIButton';
 import { ApiClinic } from '../../../store/clinics/models.ts';
 import store from '../../../store';
 import { observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
 
 interface ClinicCardProps {
   clinic: ApiClinic;
@@ -21,14 +22,16 @@ const ClinicCard: FC<ClinicCardProps> = (props) => {
 
   return (
     <div className="clinic-card">
-      <UITypography
-        className={'clinic-card__title'}
-        typography="text_fz32_ln37"
-        color="textBrown100"
-        fontWeight={400}
-      >
-        {props.clinic.name}
-      </UITypography>
+      <Link to={`/clinics/${props.clinic.id}`}>
+        <UITypography
+          className={'clinic-card__title'}
+          typography="text_fz32_ln37"
+          color="textBrown100"
+          fontWeight={400}
+        >
+          {props.clinic.name}
+        </UITypography>
+      </Link>
 
       <UITypography
         className={'clinic-card__subtitle'}

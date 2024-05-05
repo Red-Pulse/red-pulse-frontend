@@ -136,6 +136,10 @@ const ProfilePage = () => {
               <b>Clinic Address: </b>
               <span>{store.auth.clinic.address}</span>
             </div>
+            <div className="profile__card-info">
+              <b>Joined Users Count: </b>
+              <span>{store.clinics.currentClinic?.users.length ?? 0}</span>
+            </div>
             <b>Need bloods: </b>
             <div className={'profile__card-badges'}>
               {store.bloodTypes.bloodTypes.map((bloodType) => {

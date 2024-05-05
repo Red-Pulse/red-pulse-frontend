@@ -3,6 +3,7 @@ import MainPage from './pages/MainPage/MainPage.tsx';
 import { useEffect } from 'react';
 import store from './store';
 import ProfilePage from './pages/ProfilePage/ProfilePage.tsx';
+import ClinicPage from './pages/ClinicPage/ClinicPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,11 @@ const router = createBrowserRouter([
   {
     path: '/profile',
     element: <ProfilePage />,
+  },
+
+  {
+    path: '/clinics/:id',
+    element: <ClinicPage />,
   },
 ]);
 
