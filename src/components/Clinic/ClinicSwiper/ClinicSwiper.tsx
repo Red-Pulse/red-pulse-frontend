@@ -44,7 +44,7 @@ const ClinicSwiper: FC<ClinicSwiperProps> = (props) => {
         Clinics
       </UITypography>
       <Swiper
-        spaceBetween={20}
+        spaceBetween={28}
         slidesPerView="auto"
         navigation={true}
         modules={[Navigation]}
